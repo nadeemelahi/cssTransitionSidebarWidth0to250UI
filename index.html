@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>sidebar css transitions - width property</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="author" content="nadeem.elahi@gmail.com, nadeem@webscripts.biz">
+		<style>
+* { margin: 0; padding: 0; }
+#sidebarBtn {
+	border: 1px solid blue;
+
+}
+#sidebar { 
+	height: 100%; 
+	width: 0; 
+	position: fixed;
+	z-index: 50;
+	top: 0; left: 0;
+	background: gray;
+	overflow-x: hidden;
+	transition: 0.5s;
+	background: red;
+}
+		</style>
+
+	</head>
+	<body>
+		<div id="sidebarBtnWrapper">
+			<button id="sidebarBtn">sidebar</button>
+		</div>
+
+		<div id="sidebar">
+			<h2>Sidebar</h2>
+			<p> the side bar</p>
+		</div>
+		
+		<script>
+
+var sidebarVisible = 0;
+var sidebar = document.getElementById("sidebar");
+function showSidebar(){
+	sidebar.style.width = "250px";
+	sidebarVisible = 1;
+}
+function hideSidebar(){
+	sidebar.style.width = "0";
+	sidebarVisible = 0;
+}
+			
+window.addEventListener("click",clickHandler,false);
+function clickHandler(e){
+	if(!e) var e = window.event;
+	
+	if( e.target.id == "sidebarBtnWrapper" || e.target.id == "sidebarBtn" ){
+		showSidebar();
+	} else {
+		if(sidebarVisible) hideSidebar();
+	}
+}
+		</script>
+	</body>
+</html>
